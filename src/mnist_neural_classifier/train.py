@@ -7,8 +7,7 @@ from torch import nn
 from torch.utils.data import DataLoader, random_split
 from torchvision import datasets, transforms
 
-from model import MNISTMLP
-
+from mnist_neural_classifier.model import MNISTMLP
 
 # 1. Load MNIST dataset
 dataset = datasets.MNIST(
@@ -143,7 +142,7 @@ Path("config.json").write_text(
     json.dumps(config, indent=2)
 )
 
-Path("metrics.json").write_text(
+Path("output/metrics.json").write_text(
     json.dumps(history, indent=2)
 )
 
@@ -151,21 +150,3 @@ print("Model, configuration and metrics saved.")
 
 
 
-
-# Load an image the model has not trained on
-test_data = datasets.MNIST(
-    root="data",
-    train=False,
-    download=True,
-    transform=transforms.ToTensor()
-)
-
-image, actual_digit = test_data[7]
-
-model.eval()
-with torch.no_grad():
-    scores = model(image.unsqueeze(0))
-    predicted_digit = scores.argmax(dim=1).item()
-
-print("Actual digit:", actual_digit)
-print("Model prediction:", predicted_digit)
