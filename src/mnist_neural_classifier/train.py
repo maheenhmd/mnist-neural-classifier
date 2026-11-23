@@ -56,6 +56,7 @@ history = []
 best_val_loss = float("inf")
 # where to save the best model and training metrics
 Path("checkpoints").mkdir(exist_ok=True)
+Path("outputs").mkdir(exist_ok=True)
 
 
 # 5. Training and validation loop
@@ -142,7 +143,7 @@ Path("config.json").write_text(
     json.dumps(config, indent=2)
 )
 
-Path("output/metrics.json").write_text(
+Path("outputs/metrics.json").write_text(
     json.dumps(history, indent=2)
 )
 

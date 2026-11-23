@@ -11,3 +11,4 @@ wheels/
 # Data and checkpoints
 data/
 checkpoints/
+.pytest_cache/

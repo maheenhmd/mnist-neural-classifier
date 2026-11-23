@@ -2,6 +2,7 @@
 import torch
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
+
 from mnist_neural_classifier.model import MNISTMLP
 
 # Load 10,000 test images
